@@ -1,0 +1,82 @@
+QMainWindow {
+    background-image: url("assets/bg/bg1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+
+#HeaderBar, #Sidebar, #ContentArea {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+
+#AppTitle {
+    color: #FFFFFF;
+    font: 600 18px "Inter", "Roboto", sans-serif;
+    letter-spacing: 0.4px;
+}
+
+QLabel {
+    color: rgba(255,255,255,0.9);
+}
+
+
+QLineEdit {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 10px;
+    padding: 8px 10px;
+    color: #E8EAF6;
+}
+QLineEdit::placeholder { color: rgba(232,234,246,0.6); }
+
+#SectionTitle {
+    color: #FFFFFF;
+    font: 600 15px "Inter", "Roboto", sans-serif;
+}
+
+QLabel { color: rgba(232,234,246,0.86); }
+
+QPushButton#SecondaryButton {
+    background: rgba(255,255,255,0.10);
+    color: #E8EAF6;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font: 600 13px "Inter", "Roboto", sans-serif;
+}
+
+#GridPlaceholder {
+    background: transparent;
+    border: none;
+}
+
+/* Card look (optional) */
+#Card {
+    background: rgba(255,255,255,0.45);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 12px;
+}
+
+/* White rounded “pill” for the button */
+#CardButton {
+    background: rgba(255,255,255,0.95);
+    color: #222;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-weight: 600;
+}
+#CardButton:hover  { background: rgba(255,255,255,1.0); border-color: rgba(0,0,0,0.12); }
+#CardButton:pressed{ background: rgba(245,245,245,1.0); }
+#CardButton:disabled{
+    background: rgba(255,255,255,0.5);
+    color: rgba(0,0,0,0.4);
+    border-color: rgba(0,0,0,0.05);
+}
+
+

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "games": [
+    {
+      "id": "quantum-dice",
+      "name": "Quantum Dice",
+      "manifest_url": "https://raw.githubusercontent.com/EddieMoualek2003/quantum_dice_root/main/paiqm_game.yaml",
+      "repo": "https://github.com/EddieMoualek2003/quantum_dice_root.git",
+      "ref": "main"
+    }
+  ]
+}

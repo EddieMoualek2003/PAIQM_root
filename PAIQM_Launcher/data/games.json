@@ -1,0 +1,26 @@
+[
+  {
+    "id": "quantum-dice",
+    "name": "Quantum Dice Game",
+    "icon": "assets/icons/dice.png",
+    "description": "Roll a quantum dice using IBM Quantum backend."
+  },
+  {
+    "id": "zeno",
+    "name": "Quantum Zeno",
+    "icon": "assets/icons/zeno.png",
+    "description": "Explore the Quantum Zeno effect interactively."
+  },
+  {
+    "id": "teleport",
+    "name": "Quantum Teleportation",
+    "icon": "assets/icons/teleport.png",
+    "description": "Learn and simulate quantum teleportation."
+  },
+  {
+    "id": "tunnel",
+    "name": "Quantum Teleportation",
+    "icon": "assets/icons/teleport.png",
+    "description": "Learn and simulate quantum teleportation."
+  }
+]
