@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paiqm-launcher"
+version = "1.2.4"
+description = "Portable AI Quantum Machine Launcher"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "qiskit",
+    "matplotlib",
+    "requests",
+    "scipy",
+    "qiskit_ibm_runtime",
+    "qiskit_aer",
+    "matplotlib",
+    "numpy",
+    "PyQt5",
+    "pylatexenc"
+]
