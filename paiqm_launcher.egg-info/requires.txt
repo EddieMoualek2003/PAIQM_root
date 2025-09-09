@@ -1,0 +1,9 @@
+qiskit
+matplotlib
+requests
+scipy
+qiskit_ibm_runtime
+qiskit_aer
+numpy
+PyQt5
+pylatexenc

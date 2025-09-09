@@ -1,0 +1,2 @@
+[console_scripts]
+paiqm-launcher = PAIQM_root.__main__:main
