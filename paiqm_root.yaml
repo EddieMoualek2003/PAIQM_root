@@ -1,0 +1,35 @@
+schema_version: 1
+id: paiqm-root
+name: "paiqm-launcher"
+version: "1.0.1"
+description: "PAIQM Root Project"
+author: "Eddie Moualek"
+license: "MIT"
+
+requirements:
+  python: ">=3.11,<3.13"
+  pip:
+    - qiskit
+    - matplotlib
+    - requests
+    - scipy
+    - qiskit_ibm_runtime
+    - qiskit_aer
+    - numpy
+    - PyQt5
+    - pylatexenc
+runtime:
+  type: "python"
+  entry:
+    module: "PAIQM_root"
+    args: []
+ui:
+  icon: ""
+  categories: ["education","infrastructure"]
+
+compatibility:
+  raspi_models: ["Pi 4","Pi 5"]
+  min_ram_mb: 2048
+
+hooks:
+  post_clone: []
