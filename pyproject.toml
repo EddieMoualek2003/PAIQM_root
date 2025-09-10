@@ -16,7 +16,8 @@ dependencies = [
     "qiskit_aer",
     "numpy",
     "PyQt5",
-    "pylatexenc"
+    "pylatexenc",
+    "yaml"
 ]
 
 [project.scripts]
