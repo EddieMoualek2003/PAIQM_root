@@ -67,6 +67,7 @@ def build():
 
 def git_push():
     # Push manifest + build artifacts (dist + egg-info if present)
+    run("git", "add", "paiqm_game.yaml", "pyproject.toml")
     run("git", "add", "paiqm_root.yaml")
     if (ROOT / "dist").exists():
         run("git", "add", "dist")
