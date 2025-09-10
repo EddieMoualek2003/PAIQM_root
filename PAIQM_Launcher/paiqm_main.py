@@ -242,7 +242,7 @@ class MainWindow(QMainWindow):
     def launch_game(self, game_id: str):
         print(f"Launching: {game_id}")
 
-        gif_path = os.path.join(os.path.dirname(__file__), "assets", "loading.gif")
+        gif_path = os.path.join(os.path.dirname(__file__), "assets", "dice_loading.gif")
         self.splash = SplashScreen(gif_path)
         self.splash.show()
 
