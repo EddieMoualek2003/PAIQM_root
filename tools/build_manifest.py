@@ -3,9 +3,9 @@ from pathlib import Path
 import subprocess, sys, tomllib, shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "paiqm_game.yaml"
-GAME_ID = "quantum-dice"
-PKG = "quantum_dice_game"
+MANIFEST = ROOT / "paiqm_root.yaml"
+GAME_ID = "paiqm-root"
+PKG = "PAIQM_root"
 
 def run(*cmd, cwd=ROOT):
     print(">", " ".join(cmd))
@@ -33,7 +33,7 @@ schema_version: 1
 id: {GAME_ID}
 name: "{name}"
 version: "{version}"
-description: "Quantum Dice Game"
+description: "PAIQM Root Project"
 author: "Eddie Moualek"
 license: "MIT"
 
@@ -47,7 +47,7 @@ requirements:
     args: []
 ui:
   icon: ""
-  categories: ["education","beginner"]
+  categories: ["education","infrastructure"]
 
 compatibility:
   raspi_models: ["Pi 4","Pi 5"]
@@ -66,8 +66,13 @@ def build():
     run(sys.executable, "-m", "build")
 
 def git_push():
-    run("git", "add", "paiqm_game.yaml")
-    run("git", "commit", "-m", "chore: update manifest", cwd=ROOT)
+    # Push manifest + build artifacts (dist + egg-info if present)
+    run("git", "add", "paiqm_root.yaml")
+    if (ROOT / "dist").exists():
+        run("git", "add", "dist")
+    for egg in ROOT.glob("*.egg-info"):
+        run("git", "add", str(egg))
+    run("git", "commit", "-m", "chore: update manifest and build", cwd=ROOT)
     run("git", "push")
 
 def main():
