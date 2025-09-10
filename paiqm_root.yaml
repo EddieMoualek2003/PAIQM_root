@@ -21,7 +21,7 @@ requirements:
 runtime:
   type: "python"
   entry:
-    module: "PAIQM_root"
+    module: "PAIQM_Launcher"
     args: []
 ui:
   icon: ""
