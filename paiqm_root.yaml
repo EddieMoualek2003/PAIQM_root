@@ -18,7 +18,7 @@ requirements:
     - numpy
     - PyQt5
     - pylatexenc
-    - yaml
+    - PyYAML
 runtime:
   type: "python"
   entry:
