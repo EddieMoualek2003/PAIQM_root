@@ -1,9 +1,8 @@
 Metadata-Version: 2.4
 Name: paiqm-launcher
-Version: 1.0.2
+Version: 1.0.3
 Summary: Portable AI Quantum Machine Launcher
 Requires-Python: >=3.11
-Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: qiskit
 Requires-Dist: matplotlib
@@ -15,5 +14,3 @@ Requires-Dist: numpy
 Requires-Dist: PyQt5
 Requires-Dist: pylatexenc
 Dynamic: license-file
-
-# PAIQM_root
