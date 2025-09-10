@@ -4,8 +4,8 @@ import subprocess, sys, tomllib, shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "paiqm_root.yaml"
-GAME_ID = "paiqm-root"
-PKG = "PAIQM_root"
+GAME_ID = "paiqm-launcher"
+PKG = "PAIQM_Launcher"
 
 def run(*cmd, cwd=ROOT):
     print(">", " ".join(cmd))
