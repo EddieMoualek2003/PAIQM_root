@@ -20,4 +20,5 @@ dependencies = [
 ]
 
 [project.scripts]
-paiqm-launcher = "PAIQM_root.__main__:main"
+[project.scripts]
+paiqm-launcher = "PAIQM_Launcher.__main__:main"
