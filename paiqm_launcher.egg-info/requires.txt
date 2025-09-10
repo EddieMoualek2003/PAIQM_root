@@ -7,3 +7,4 @@ qiskit_aer
 numpy
 PyQt5
 pylatexenc
+yaml

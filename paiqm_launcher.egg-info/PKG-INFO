@@ -13,4 +13,5 @@ Requires-Dist: qiskit_aer
 Requires-Dist: numpy
 Requires-Dist: PyQt5
 Requires-Dist: pylatexenc
+Requires-Dist: yaml
 Dynamic: license-file
