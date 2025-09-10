@@ -1,5 +1,5 @@
 schema_version: 1
-id: paiqm-root
+id: paiqm-launcher
 name: "paiqm-launcher"
 version: "1.0.3"
 description: "PAIQM Root Project"
