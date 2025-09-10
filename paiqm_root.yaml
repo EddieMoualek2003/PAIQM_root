@@ -1,7 +1,7 @@
 schema_version: 1
 id: paiqm-root
 name: "paiqm-launcher"
-version: "1.0.1"
+version: "1.0.2"
 description: "PAIQM Root Project"
 author: "Eddie Moualek"
 license: "MIT"
