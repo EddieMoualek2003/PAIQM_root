@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "paiqm-launcher"
-version = "2.0.2"
+version = "2.0.3"
 description = "Portable AI Quantum Machine Launcher"
 requires-python = ">=3.11"
 dependencies = [
@@ -24,7 +24,11 @@ dependencies = [
 include-package-data = true
 
 [tool.setuptools.package-data]
-PAIQM_Launcher = ["data/*.json", "theme.qss"]
+PAIQM_Launcher = [
+    "data/*.json",
+    "theme.qss",
+    "assets/**/*"   # <-- include all nested files under assets
+]
 
 [project.scripts]
 paiqm-launcher = "PAIQM_Launcher.__main__:main"
