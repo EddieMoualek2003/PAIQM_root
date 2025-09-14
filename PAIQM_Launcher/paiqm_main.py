@@ -4,18 +4,20 @@ import json
 from PyQt5.QtCore import Qt, pyqtSignal, QThread, QObject
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QPixmap, QMovie
-
-from .game_launcher import game_launcher_main, game_verifier_main
+from .game_handler import install_latest_release, run_module
 
 
 class Card(QFrame):
-    cardClicked = pyqtSignal(str)
+    # Now emits the full game_info object
+    cardClicked = pyqtSignal(dict)
 
     def __init__(self, game_info: dict, parent=None):
         super().__init__(parent)
         self.setObjectName("Card")
         self.setMinimumHeight(160)
-        self._game_id = game_info["id"]
+
+        self._game_info = game_info
+        self._pixmap = None
 
         lay = QVBoxLayout(self)
         lay.setContentsMargins(12, 12, 12, 12)
@@ -23,10 +25,8 @@ class Card(QFrame):
 
         # Icon
         self.icon_label = QLabel()
-        self._pixmap = None
-
-        if "icon" in game_info:
-            icon_path = os.path.join(os.path.dirname(__file__), game_info["icon"])
+        if "icon" in self._game_info:
+            icon_path = os.path.join(os.path.dirname(__file__), self._game_info["icon"])
             icon_path = os.path.normpath(icon_path)
 
             pixmap = QPixmap(icon_path)
@@ -35,12 +35,11 @@ class Card(QFrame):
                 self.update_icon_size()
             else:
                 self.icon_label.setText("[no icon]")
-
         self.icon_label.setAlignment(Qt.AlignCenter)
         lay.addWidget(self.icon_label)
 
         # Title
-        title = QLabel(game_info["name"])
+        title = QLabel(self._game_info.get("name", "Unknown Game"))
         title.setObjectName("CardTitle")
         title.setAlignment(Qt.AlignCenter)
         title.setStyleSheet("""
@@ -51,8 +50,8 @@ class Card(QFrame):
         lay.addWidget(title)
 
         # Optional description
-        if "description" in game_info:
-            desc = QLabel(game_info["description"])
+        if "description" in self._game_info:
+            desc = QLabel(self._game_info["description"])
             desc.setWordWrap(True)
             desc.setAlignment(Qt.AlignCenter)
             desc.setObjectName("CardDescription")
@@ -69,8 +68,8 @@ class Card(QFrame):
         self.button.setCursor(Qt.PointingHandCursor)
         lay.addWidget(self.button, alignment=Qt.AlignCenter)
 
-        # Re-emit click
-        self.button.clicked.connect(lambda _checked=False: self.cardClicked.emit(self._game_id))
+        # Emit full object on click
+        self.button.clicked.connect(lambda _checked=False: self.cardClicked.emit(self._game_info))
 
     def resizeEvent(self, event):
         super().resizeEvent(event)
@@ -79,10 +78,7 @@ class Card(QFrame):
     def update_icon_size(self):
         if self._pixmap:
             window = self.window()
-            if window:
-                size = int(max(32, window.height() // 3))
-            else:
-                size = 64
+            size = int(max(32, window.height() // 3)) if window else 64
             scaled = self._pixmap.scaled(size, size, Qt.KeepAspectRatio, Qt.SmoothTransformation)
             self.icon_label.setPixmap(scaled)
 
@@ -175,15 +171,17 @@ class ContentArea(QFrame):
 
 # Worker for background verification
 class GameVerifierWorker(QObject):
-    finished = pyqtSignal(str)
+    finished = pyqtSignal(dict)
 
-    def __init__(self, game_id):
+    def __init__(self, game_info: dict):
         super().__init__()
-        self.game_id = game_id
+        self.game_info = game_info
 
     def run(self):
-        game_verifier_main(self.game_id)
-        self.finished.emit(self.game_id)
+        # Just verify by ID for now
+        print("Updating game")
+        install_latest_release(self.game_info.get("owner"), self.game_info.get("repo_root"))
+        self.finished.emit(self.game_info)
 
 
 # Splash screen window
@@ -239,16 +237,27 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(central)
 
-    def launch_game(self, game_id: str):
+    def launch_game(self, game_info: dict):
+        game_id = game_info.get("id", "unknown")
         print(f"Launching: {game_id}")
 
-        gif_path = os.path.join(os.path.dirname(__file__), "assets", "dice_loading.gif")
+        # This can be replaced with the 
+
+        gif_rel_path = game_info.get("loading_gif", "assets/dice_loading.gif")
+        gif_path = os.path.join(os.path.dirname(__file__), gif_rel_path)
+        gif_path = os.path.normpath(gif_path)
+
+        if not os.path.exists(gif_path):
+            print(f"Warning: loading gif not found at {gif_path}, using fallback")
+            gif_path = os.path.join(os.path.dirname(__file__), "assets", "dice_loading.gif")
+
         self.splash = SplashScreen(gif_path)
         self.splash.show()
 
+
         # Background thread for verification
         self.thread = QThread()
-        self.worker = GameVerifierWorker(game_id)
+        self.worker = GameVerifierWorker(game_info)
         self.worker.moveToThread(self.thread)
 
         self.thread.started.connect(self.worker.run)
@@ -261,13 +270,15 @@ class MainWindow(QMainWindow):
 
         self.thread.start()
 
-    def on_verifier_finished(self, game_id: str):
+    # This function is responsible for running the game. 
+    def on_verifier_finished(self, game_info: dict):
         self.splash.close()
-        if game_id == "quantum-dice":
-            game_launcher_main("quantum-dice")
-        else:
+        game_id = game_info.get("id", "")
+        print(f"Running {game_id}")
+        try:
+            run_module(game_info.get("module_name"))
+        except:
             QMessageBox.information(self, "Launch Game", f"No launcher linked for {game_id}")
-
 
 def load_theme(app):
     qss_path = os.path.join(os.path.dirname(__file__), "theme.qss")

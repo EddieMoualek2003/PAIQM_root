@@ -2,25 +2,53 @@
   {
     "id": "quantum-dice",
     "name": "Quantum Dice Game",
+    "owner": "EddieMoualek2003",
+    "repo_root": "quantum_dice_root",
+    "module_name": "quantum_dice_game",
+    "manifest_url": "https://raw.githubusercontent.com/EddieMoualek2003/quantum_dice_root/main/paiqm_game.yaml",
+    "repo": "https://github.com/EddieMoualek2003/quantum_dice_root.git",
+    "ref": "main",
     "icon": "assets/icons/dice.png",
+    "loading_gif": "assets/dice_loading.gif",
     "description": "Roll a quantum dice using IBM Quantum backend."
   },
   {
-    "id": "zeno",
-    "name": "Quantum Zeno",
-    "icon": "assets/icons/zeno.png",
-    "description": "Explore the Quantum Zeno effect interactively."
+    "id": "quantum-dice",
+    "name": "Quantum Dice Game",
+    "owner": "EddieMoualek2003",
+    "repo_root": "quantum_dice_root",
+    "module_name": "quantum_dice_game",
+    "manifest_url": "https://raw.githubusercontent.com/EddieMoualek2003/quantum_dice_root/main/paiqm_game.yaml",
+    "repo": "https://github.com/EddieMoualek2003/quantum_dice_root.git",
+    "ref": "main",
+    "icon": "assets/icons/dice.png",
+    "loading_gif": "assets/dice_loading.gif",
+    "description": "Roll a quantum dice using IBM Quantum backend."
   },
   {
-    "id": "teleport",
-    "name": "Quantum Teleportation",
-    "icon": "assets/icons/teleport.png",
-    "description": "Learn and simulate quantum teleportation."
+    "id": "quantum-dice",
+    "name": "Quantum Dice Game",
+    "owner": "EddieMoualek2003",
+    "repo_root": "quantum_dice_root",
+    "module_name": "quantum_dice_game",
+    "manifest_url": "https://raw.githubusercontent.com/EddieMoualek2003/quantum_dice_root/main/paiqm_game.yaml",
+    "repo": "https://github.com/EddieMoualek2003/quantum_dice_root.git",
+    "ref": "main",
+    "icon": "assets/icons/dice.png",
+    "loading_gif": "assets/dice_loading.gif",
+    "description": "Roll a quantum dice using IBM Quantum backend."
   },
   {
-    "id": "tunnel",
-    "name": "Quantum Teleportation",
-    "icon": "assets/icons/teleport.png",
-    "description": "Learn and simulate quantum teleportation."
+    "id": "quantum-dice",
+    "name": "Quantum Dice Game 4",
+    "owner": "EddieMoualek2003",
+    "repo_root": "quantum_dice_root",
+    "module_name": "quantum_dice_game",
+    "manifest_url": "https://raw.githubusercontent.com/EddieMoualek2003/quantum_dice_root/main/paiqm_game.yaml",
+    "repo": "https://github.com/EddieMoualek2003/quantum_dice_root.git",
+    "ref": "main",
+    "icon": "assets/icons/dice.png",
+    "loading_gif": "assets/dice_loading.gif",
+    "description": "Roll a quantum dice using IBM Quantum backend."
   }
 ]
